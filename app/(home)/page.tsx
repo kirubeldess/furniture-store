@@ -1,7 +1,12 @@
+import WhyChooseUs from "@/components/shared/choose";
+
 export default async function Page() {
   return (
     <div>
-      <h1 className='h1-bold text-center p-10'>Home Page Content</h1>
+      <div className="hidden md:block">
+
+        <WhyChooseUs />
+      </div>
     </div>
   )
 }

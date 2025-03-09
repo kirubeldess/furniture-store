@@ -3,7 +3,7 @@ import { HomeCard } from "@/components/shared/home/home-card";
 import { getAllCategories } from "@/lib/actions/product.actions";
 import { toSlug } from "@/lib/utils";
 
-export default async function HomePage() {
+export default async function Page() {
   const categories = (await getAllCategories()).slice(0, 6)
   const cards = [
     {

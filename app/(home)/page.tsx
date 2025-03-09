@@ -4,7 +4,6 @@ export default async function Page() {
   return (
     <div>
       <div className="hidden md:block">
-
         <WhyChooseUs />
       </div>
     </div>

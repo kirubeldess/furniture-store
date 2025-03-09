@@ -73,36 +73,6 @@ export function HomeCard({ cards }: { cards: CardItem[] }) {
   const [selectedCategory, setSelectedCategory] = useState(cards[0].title)
 
   return (
-    // <div className="flex flex-col items-center space-y-4">
-      
-    //   <div className="flex items-center space-x-4  p-4 rounded-full w-fit mx-auto font-bold text-2xl font-jost">
-    //     {cards.map((card) => (
-    //       <button
-    //         key={card.title}
-    //         onClick={() => setSelectedCategory(card.title)}
-    //         className={`px-6 py-2 rounded-full transition cursor-pointer ${
-    //           selectedCategory === card.title
-    //             ? 'bg-white shadow-md text-black font-medium'
-    //             : 'text-gray-500 hover:text-black'
-    //         }`}
-    //       >
-    //         {card.title}
-    //       </button>
-    //     ))}
-    //   </div>
-
-      
-    //   <div className="bg-white p-4 shadow-md rounded-lg w-full max-w-md flex mb-6 font-jost">
-    //     {cards
-    //       .find((card) => card.title === selectedCategory)
-    //       ?.items.map((item) => (
-    //         <Link key={item.name} href={item.href} className="block px-4 py-2 hover:bg-gray-100">
-    //           {item.name}
-    //         </Link>
-    //       ))}
-    //   </div>
-    // </div>
-
 
     <div className="flex flex-col items-center space-y-4">
         <div className="flex items-center space-x-4 p-4 rounded-full w-fit mx-auto font-bold text-3xl font-jost">

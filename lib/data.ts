@@ -60,7 +60,7 @@ const products: IProductInput[] = [
   },
   {
     name: 'Classic Dining Chair',
-    slug: toSlug('Classic Dining Chair'),
+    slug: toSlug('Simple and elegant dining chair'),
     category: 'chairs',
     images: [ '/images/chair-4.jpg'],
     tags: ['best-seller'],

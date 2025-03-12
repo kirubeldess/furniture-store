@@ -94,16 +94,15 @@ export function HomeCard({ cards }: { cards: CardItem[] }) {
         </div>
 
 
-        <div className="bg-white p-4 shadow-md rounded-lg w-full max-w-md flex mb-6 font-jost">
+        <div className="bg-white p-4 pl-8 shadow-md rounded-lg w-full max-w-md flex mb-6 font-jost">
             {cards
             .find((card) => card.title === selectedCategory)
             ?.items.map((item) => (
-                <Link key={item.name} href={item.href} className="block px-4 py-2 hover:bg-gray-100 hover:rounded-2xl">
+                <Link key={item.name} href={item.href} className="block px-3 md:px-4 py-2  hover:bg-gray-100 hover:rounded-2xl ">
                 {item.name}
                 </Link>
             ))}
         </div>
-    </div>
- 
+    </div> 
   )
 }

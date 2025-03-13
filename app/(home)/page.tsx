@@ -1,6 +1,7 @@
 import WhyChooseUs from "@/components/shared/choose";
 import Experiences from "@/components/shared/home/experiences";
 import { HomeCard } from "@/components/shared/home/home-card";
+import MaterialsSection from "@/components/shared/home/materials";
 import ProductSlider from "@/components/shared/product/product-slider";
 import { Card, CardContent } from "@/components/ui/card";
 import { getAllCategories, getProductsByTag } from "@/lib/actions/product.actions";
@@ -41,6 +42,7 @@ export default async function Page() {
           </CardContent>
         </Card>
         <Experiences/>
+        <MaterialsSection/>
     </div>
   )
 }

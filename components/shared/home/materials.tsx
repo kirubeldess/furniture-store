@@ -1,50 +1,3 @@
-// import Image from "next/image";
-
-// export default function MaterialsSection() {
-//   return (
-//     <section className="py-16 px-4 md:px-8 bg-white">
-//       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-        
-//         {/* Left Content */}
-//         <div className="md:w-1/2 space-y-6">
-//           <h3 className="text-yellow-500 font-semibold tracking-wide uppercase">Materials</h3>
-//           <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-//             Very Serious <br /> Materials For Making <br /> Furniture
-//           </h2>
-//           <p className="text-gray-600 text-lg">
-//             Because Panto was very serious about designing furniture for our environment,
-//             using a very expensive and famous capital but at a relatively low price.
-//           </p>
-//           <a href="#" className="text-yellow-500 font-semibold flex items-center gap-2 hover:underline">
-//             More Info →
-//           </a>
-//         </div>
-
-//         {/* Right Image Grid */}
-//         <div className="md:w-1/2 grid grid-cols-2 gap-4">
-//           {/* Top-left Image */}
-//           <div className="relative w-full h-36 md:h-44 rounded-xl overflow-hidden shadow-md">
-//             <Image src="/images/gro3.png" alt="Furniture" layout="fill" objectFit="cover" />
-//           </div>
-
-//           {/* Big Image on Right */}
-//           <div className="relative row-span-2 w-full h-72 md:h-80 rounded-xl overflow-hidden shadow-lg">
-//             <Image src="/images/gro2.png" alt="Dining Room" layout="fill" objectFit="cover" />
-//           </div>
-
-//           {/* Bottom-left Image */}
-//           <div className="relative w-full h-36 md:h-44 rounded-xl overflow-hidden shadow-md">
-//             <Image src="/images/gro1.png" alt="Living Room" layout="fill" objectFit="cover" />
-//           </div>
-//         </div>
-
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
 import Image from "next/image";
 
 export default function MaterialsSection() {
@@ -52,7 +5,6 @@ export default function MaterialsSection() {
     <section className="py-16 px-4 md:px-8 bg-white">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
         
-        {/* Left Content */}
         <div className="md:w-1/2 space-y-6">
           <h3 className="text-yellow-500 font-semibold tracking-wide uppercase">Materials</h3>
           <h2 className="text-3xl md:text-4xl font-bold leading-tight">

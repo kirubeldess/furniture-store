@@ -14,6 +14,7 @@ import Link from 'next/link'
 import Menu from '@/components/shared/header/menu'
 import data from '@/lib/data'
 import { APP_NAME } from '@/lib/constants'
+import { CheckCircleIcon, XCircleIcon } from 'lucide-react'
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>
@@ -50,110 +51,140 @@ export default async function ProductDetails(props: {
   })
 
   return (
-    <div>
-        <nav className="absolute top-0 left-0 w-full flex items-center justify-center p-6 pb-5 mb-5">
-          <div className="text-yellow-500 font-bold text-sm md:text-xl absolute left-6 ">
-            <Link href="/">{APP_NAME}</Link>
-          </div>
-
-          <ul className="flex items-center space-x-4 text-black font-jost text-sm md:text-xl">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50/30">
+        <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-5 bg-white/90 backdrop-blur-xl shadow-sm z-50 border-b border-gray-100">
+            <div className="text-amber-600 font-bold text-2xl font-playfair tracking-wide">
+            <Link href="/" className="hover:text-amber-700 transition-colors">
+                {APP_NAME}
+            </Link>
+            </div>
+            <ul className="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
             {data.headerMenus.map((menu) => (
-              <li key={menu.href}>
-                <Link href={menu.href} className="header-button !p-2">
-                  {menu.name}
+                <li key={menu.href}>
+                <Link href={menu.href} className="hover:text-amber-600 transition-colors text-lg">
+                    {menu.name}
                 </Link>
-              </li>
+                </li>
             ))}
-
-            <Link href="/" className="header-button !p-2 hidden md:inline-block">
-              About Us
-            </Link>
-            <Link href="/" className="header-button !p-2 hidden md:inline-block">
-              Contact Us
-            </Link>
-          </ul>
-
-          <div className="absolute right-6">
-            <Menu />
-          </div>
+            <li>
+                <Link href="/" className="hover:text-amber-600 transition-colors text-lg">
+                About
+                </Link>
+            </li>
+            <li>
+                <Link href="/" className="hover:text-amber-600 transition-colors text-lg">
+                Contact
+                </Link>
+            </li>
+            </ul>
+            <div className="">
+            <Menu/>
+            </div>
         </nav>
-      <section className='mt-15'>
-      
-        <div className='grid grid-cols-1 md:grid-cols-5  '>
-          <div className='col-span-2'>
-            <ProductGallery images={product.images} />
+
+  <main className="pt-28 px-4 md:px-8 max-w-7xl mx-auto">
+    <section className="mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div className="md:col-span-5 lg:col-span-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <ProductGallery 
+            images={product.images}
+          />
+        </div>
+
+        <div className="md:col-span-4 lg:col-span-5 flex flex-col justify-center space-y-6 p-8 bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="px-3 py-1 bg-amber-50 text-amber-700 rounded-full text-sm font-medium">
+              {product.brand}
+            </span>
+            <span className="text-gray-400">•</span>
+            <span className="text-gray-500 text-sm">{product.category}</span>
+          </div>
+          
+          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 font-playfair leading-tight">
+            {product.name}
+          </h1>
+
+          <div className="flex items-center gap-3">
+            <div className="flex items-center">
+              <span className="text-amber-600 font-semibold text-xl mr-2">
+                {product.avgRating.toFixed(1)}
+              </span>
+              <Rating rating={product.avgRating}/>
+            </div>
+            <span className="text-gray-400 text-sm">
+              ({product.numReviews} reviews)
+            </span>
           </div>
 
-          <div className='flex w-full flex-col gap-2 md:p-5 col-span-2'>
-            <div className='flex flex-col gap-3'>
-              <p className='p-medium-16 rounded-full bg-grey-500/10   text-grey-500'>
-                Brand {product.brand} {product.category}
-              </p>
-              <h1 className='font-bold text-lg lg:text-xl'>
-                {product.name}
-              </h1>
-              <div className='flex items-center gap-2'>
-                <span>{product.avgRating.toFixed(1)}</span>
-                <Rating rating={product.avgRating} />
-                <span>{product.numReviews} ratings</span>
-              </div>
-              <Separator />
-              <div className='flex flex-col gap-3 sm:flex-row sm:items-center'>
-                <div className='flex gap-3'>
-                  <ProductPrice
-                    price={product.price}
-                    listPrice={product.listPrice}
-                    isDeal={product.tags.includes('todays-deal')}
-                    forListing={false}
-                  />
-                </div>
-              </div>
-            </div>
-            <div>
-              <SelectVariant
-                product={product}
-                size={size || product.sizes[0]}
-                color={color || product.colors[0]}
-              />
-            </div>
-            <Separator className='my-2' />
-            <div className='flex flex-col gap-2'>
-              <p className='p-bold-20 text-grey-600'>Description:</p>
-              <p className='p-medium-16 lg:p-regular-18'>
-                {product.description}
-              </p>
-            </div>
-          </div>
-          <div>
-            <Card>
-              <CardContent className='p-4 flex flex-col  gap-4'>
-                {/* <ProductPrice price={product.price} /> */}
+          <Separator className="my-4 border-gray-100" />
 
-                {product.countInStock > 0 && product.countInStock <= 3 && (
-                  <div className='text-destructive font-bold'>
-                    {`Only ${product.countInStock} left in stock - order soon`}
-                  </div>
-                )}
-                {product.countInStock !== 0 ? (
-                  <div className='text-green-700 text-xl'>In Stock</div>
-                ) : (
-                  <div className='text-destructive text-xl'>
-                    Out of Stock
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+          <div className="space-y-4">
+            <ProductPrice
+              price={product.price}
+              listPrice={product.listPrice}
+              isDeal={product.tags.includes("todays-deal")}
+              className="text-2xl font-bold text-gray-900"
+            />
+
+            <SelectVariant
+              product={product}
+              size={size || product.sizes[0]}
+              color={color || product.colors[0]}
+            />
+          </div>
+
+          <Separator className="my-4 border-gray-100" />
+
+          <div className="prose max-w-none">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              Product Details
+            </h3>
+            <p className="text-gray-600 leading-relaxed">
+              {product.description}
+            </p>
           </div>
         </div>
-      </section>
 
-      <section className='mt-10'>
+        {/* Stock Info */}
+        <div className="md:col-span-3 lg:col-span-1">
+          <Card className="w-full border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] ">
+            <CardContent className="p-6 flex flex-col gap-4 items-center text-center">
+              {product.countInStock > 0 && product.countInStock <= 3 && (
+                <div className="text-rose-600 font-medium flex items-center gap-2 h-5 w-5">
+                  <span>Only {product.countInStock} left</span>
+                </div>
+              )}
+              {product.countInStock !== 0 ? (
+                <div className="text-emerald-700 font-medium flex items-center gap-2 ">
+                  <CheckCircleIcon className="h-5 w-5" />
+                  <span className=''>In Stock</span>
+                </div>
+              ) : (
+                <div className="text-rose-600 font-medium flex items-center gap-2">
+                  <XCircleIcon className="h-5 w-5" />
+                  <span>Out of Stock</span>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </section>
+
+    <section className="mb-20">
+      <div className="mb-8 text-center">
+        <h2 className="text-2xl font-bold text-gray-900 font-playfair">
+          Best Sellers in {product.category}
+        </h2>
+        <p className="text-gray-500 mt-2">Discover our most popular items</p>
+      </div>
+      <div  className="rounded-xl overflow-hidden">
         <ProductSlider
-          products={relatedProducts.data}
-          title={`Best Sellers in ${product.category}`}
+            products={relatedProducts.data}
         />
-      </section>
-    </div>
-
+      </div>
+    </section>
+  </main>
+</div>
   )
 }
